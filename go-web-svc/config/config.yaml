@@ -1,0 +1,11 @@
+mysql:
+   host: 192.168.1.195
+   port: 3306
+   user: root
+   password: passw0rd
+   database: finance
+mongo:
+   host: 192.168.1.195
+   port: 27017
+   database: testdb
+   collection: product
