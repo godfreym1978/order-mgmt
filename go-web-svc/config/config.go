@@ -35,6 +35,12 @@ func BuildConfig() (*Databases, error) {
 	viper.AddConfigPath("/app/config")
 	viper.AddConfigPath("./config")
 
+	viper.AutomaticEnv()
+	err1 := viper.BindEnv("mysql.host", "MYSQL_HOST")
+	if err1 != nil {
+		panic(fmt.Errorf("Error mysql host: %s \n", err1))
+	}
+
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("Error config file: %s \n", err))
