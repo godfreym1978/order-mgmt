@@ -1,4 +1,4 @@
-services = ["sqladmin.googleapis.com", "bigquery.googleapis.com"]
+services = ["sqladmin.googleapis.com", "bigquery.googleapis.com","servicenetworking.googleapis.com"]
 
 region="us-central1"
 
