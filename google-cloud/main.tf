@@ -307,9 +307,16 @@ resource "google_compute_instance" "default-mysql" {
   network_interface {
     network    = var.vpc_on_prem
     subnetwork = var.subnet_on_prem
+    #to enable external IP address and enable outside connectivity
+    access_config {
+      // Ephemeral IP
+    }
   }
-  depends_on              = [google_compute_network.vpc_on_prem]
-  metadata_startup_script = file("startupscript")
+  depends_on = [google_compute_network.vpc_on_prem]
+  metadata = {
+    startup-script = file("startupscript")
+  }
+
 }
 
 #Create firewall for allowing access to OnPrem VPC resources
@@ -319,20 +326,20 @@ resource "google_compute_firewall" "default" {
   depends_on = [google_compute_network.vpc_on_prem]
   allow {
     protocol = "tcp"
-    ports    = ["80", "8080", "22", "3306"]
+    ports    = ["22", "3306"]
   }
 
-  target_tags   = ["foo"]
+  target_tags   = ["mysql"]
   source_ranges = ["0.0.0.0/0"]
 }
 
-
+/*
 #Create the instance that will be Cloud SQL migrated version of OnPrem Instance
 resource "google_sql_database" "database" {
   name     = "order-mgmt"
   instance = google_sql_database_instance.instance.name
 }
-
+*/
 # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
 #Create the instance for Cloud SQL
 resource "google_sql_database_instance" "instance" {
@@ -345,7 +352,6 @@ resource "google_sql_database_instance" "instance" {
   settings {
     tier = "db-f1-micro"
     ip_configuration {
-
       ipv4_enabled                                  = false
       private_network                               = google_compute_network.vpc_google.id
       enable_private_path_for_google_cloud_services = true
@@ -354,7 +360,7 @@ resource "google_sql_database_instance" "instance" {
 
   deletion_protection = "false"
 }
-
+/*
 #Create the user for Cloud SQL Instance
 resource "google_sql_user" "users" {
   name       = "root"
@@ -363,3 +369,4 @@ resource "google_sql_user" "users" {
   password   = "passw0rd"
   depends_on = [google_sql_database_instance.instance]
 }
+*/

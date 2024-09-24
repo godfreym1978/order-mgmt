@@ -1,11 +1,11 @@
 mysql:
-   host: 192.168.1.204
+   host: 34.136.136.51
    port: 3306
    user: root
-   password: passw0rd
+   password: password
    database: finance
 mongo:
-   host: 192.168.1.204
+   host: 34.136.136.51
    port: 27017
    database: testdb
    collection: product
