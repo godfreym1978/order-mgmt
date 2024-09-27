@@ -2,7 +2,7 @@ services = ["sqladmin.googleapis.com", "bigquery.googleapis.com","servicenetwork
 
 region="us-central1"
 
-project="steam-insight-430414-n9"
+project="*****-******-******-n9"
 
 vpc_on_prem="vpc-on-prem"
 
