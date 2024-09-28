@@ -326,7 +326,7 @@ resource "google_compute_firewall" "default" {
   depends_on = [google_compute_network.vpc_on_prem]
   allow {
     protocol = "tcp"
-    ports    = ["22", "3306"]
+    ports    = ["22", "3306", "27017"]
   }
 
   target_tags   = ["mysql"]

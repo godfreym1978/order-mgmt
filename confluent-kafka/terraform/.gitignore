@@ -1,0 +1,5 @@
+google-cloud/terraform.tfstate
+google-cloud/terraform.tfstate.backup
+google-cloud/.terraform.lock.hcl
+google-cloud/.terraform.tfstate.lock.info
+google-cloud/.terraform

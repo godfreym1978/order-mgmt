@@ -1,0 +1,26 @@
+environment                   = "Development"
+stream_gov_package            = "ESSENTIALS"
+display_name                  = "standard_kafka_cluster"
+availability                  = "SINGLE_ZONE" #"MULTI_ZONE"
+cloud                         = "GCP"
+region                        = "us-central1"
+service_account               = "orders-app-sa"
+service_account_kafka_api_key = "app-manager-kafka-api-key"
+role_name                     = "CloudClusterAdmin"
+
+
+mysql_host                    = "**.**.**.***"
+mysql_port                    = "3306"
+mysql_user                    = "root"
+mysql_password                = "********"
+mysql_topic_prefix            = "order-mgmt"
+mysql_database                = "finance"
+mysql_table                   = "finance.inventory"
+
+
+mongodb_topic_prefix          = "mongo-order-mgmt"
+mongodb_conn_host             = "******.*****.mongodb.net"
+mongodb_conn_user             = "godfrey"
+mongodb_conn_pwd              = "mongouser"
+mongodb_db                    = "finance"
+mongodb_db_collection         = "product"
